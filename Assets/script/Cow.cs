@@ -1,69 +1,10 @@
 using System;
 using UnityEngine;
 
-public class Cow
+public class Cow : Animal_Common
 {
-    private string name;
-    private int hunger;
-    private int happiness;
+    
     private float milk;
-
-    public string Name
-    {
-        get { return name; }
-        private set
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                name = value;
-            }
-            else
-            {
-                Debug.Log("Invalid name, setting default name = Cow");
-                name = "Otis";
-            }
-        }
-    }
-
-    public int Hunger
-    {
-        get { return hunger; }
-        private set
-        {
-            if (value < 0)
-            {
-                hunger = 0;
-            }
-            else if (value > 100)
-            {
-                hunger = 100;
-            }
-            else
-            {
-                hunger = value;
-            }
-        }
-    }
-
-    public int Happiness
-    {
-        get { return happiness; }
-        private set
-        {
-            if (value < 0)
-            {
-                happiness = 0;
-            }
-            else if (value > 100)
-            {
-                happiness = 100;
-            }
-            else
-            {
-                happiness = value;
-            }
-        }
-    }
 
     public float Milk
     {
@@ -71,47 +12,26 @@ public class Cow
         private set { milk = Mathf.Max(0f, value); }
     }
 
-    public Cow(string name, int hunger, int happiness, float milk)
+    public override void Init(string name, int hunger, int happiness)
     {
-        Name = name;
-        Hunger = hunger;
-        Happiness = happiness;
+        base.Init(name, hunger, happiness);
         Milk = milk;
     }
 
-    public void AdjustHunger(int i)
+     public override void MakeSound()
     {
-        Hunger = Hunger + i;
-        Debug.Log($"{Name} Hunger = {Hunger}");
+        Debug.Log($"{Name} says: Mohuhuhuhu");
     }
 
-    public void AdjustHappiness(int amount)
-    {
-        Happiness = Happiness + amount;
-        Debug.Log($"{Name} Happiness = {Happiness}");
-    }
-
-    public void Feed(string food)
-    {
-        AdjustHunger(+10);
-        AdjustHappiness(+5);
-        Debug.Log($"{Name} eat {food}.");
-    }
-
-    public void Sleep()
+    public void Mooooooo()
     {
         AdjustHunger(-5);
         AdjustHappiness(+10);
-        Debug.Log($"{Name} slept.");
+        Debug.Log($"{Name} is sleeping...zzzzzzz");
     }
 
-    public void MakeSound()
+    public override void Food()
     {
-        Debug.Log($"{Name} says: Moo!");
-    }
-
-    public void GetStatus()
-    {
-        Debug.Log($"[Cow Status] Name: {Name}, Hunger: {Hunger}, Happiness: {Happiness}, Milk: {Milk}");
+        Debug.Log($"{Name} eat:hay");
     }
 }

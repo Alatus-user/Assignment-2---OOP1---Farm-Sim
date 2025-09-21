@@ -4,31 +4,42 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Chicken chickenPrefab;
+    public Cow cowPrefab;
+
+    
+    public List<Animal_Common> farmAnimals = new List<Animal_Common>();
+
     void Start()
     {
-        // new ได้เพราะ Chicken/Cow เป็นคลาสธรรมดาแล้ว
-        Chicken chicken = new Chicken("Clucker", 50, 50, 0);
-        Cow cow = new Cow("Otis", 50, 50, 0);
+        
+        Chicken chicken = Instantiate(chickenPrefab);
+        Cow cow = Instantiate(cowPrefab);
 
-        chicken.GetStatus();
-        cow.GetStatus();
+        
+        chicken.Init("Chicky", 10, 15);
+        cow.Init("Milky", 20, 20);
 
-        Debug.Log("---- Welcome to Barn ----");
+        
+        farmAnimals.Add(chicken);
+        farmAnimals.Add(cow);
 
-        chicken.MakeSound();
-        chicken.Feed("Corn");
-        chicken.Sleep();
-        chicken.AdjustHunger(15);
-        chicken.AdjustHappiness(-5);
+        
+        Debug.Log("=== Welcome to Farm Yard ===");
+        Debug.Log($"There are {farmAnimals.Count} animals living in the Farm Yard.");
 
-        cow.MakeSound();
-        cow.Feed("Hay");
-        cow.Sleep();
-        cow.AdjustHunger(-10);
-        cow.AdjustHappiness(5);
+        foreach (Animal_Common a in farmAnimals)
+        {
+            chicken.Init("Chicky", 10, 15);
+            cow.Init("Milky", 20, 20);
+            Debug.Log($"{a.Name}");
+            a.MakeSound();
+            a.Food();
 
-        Debug.Log("---- After Actions ----");
-        chicken.GetStatus();
-        cow.GetStatus();
+            
+            Debug.Log($"{a.Name} Hunger: {a.Hunger} | Happiness: {a.Happiness}");
+        }
+
+        
     }
 }
