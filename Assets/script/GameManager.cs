@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         
         farmAnimals.Add(chicken);
         farmAnimals.Add(cow);
-
+        
         
         Debug.Log("=== Welcome to Farm Yard ===");
         Debug.Log($"There are {farmAnimals.Count} animals living in the Farm Yard.");
@@ -32,12 +32,12 @@ public class GameManager : MonoBehaviour
         {
             chicken.Init("Chicky", 10, 15);
             cow.Init("Milky", 20, 20);
-            Debug.Log($"{a.Name}");
+            
             a.MakeSound();
             a.Food();
 
-            
-            Debug.Log($"{a.Name} Hunger: {a.Hunger} | Happiness: {a.Happiness}");
+
+            a.GetStatus();
         }
 
         
