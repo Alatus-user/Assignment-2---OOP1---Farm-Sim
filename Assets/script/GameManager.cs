@@ -14,11 +14,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Log("=== Welcome to Farm Yard ===");
-        Debug.Log($"There are {farmAnimals.Count} animals living in the Farm Yard.");
         
         Chicken chicken = Instantiate(chickenPrefab);
         Cow cow = Instantiate(cowPrefab);
         Pig pig = Instantiate(pigPrefab);
+        farmAnimals.Add(chicken);
+        farmAnimals.Add(cow);
+        farmAnimals.Add(pig);
+        Debug.Log($"There are {farmAnimals.Count} animals living in the Farm Yard.");
         
         chicken.Init("Chicky", 10, 15);
         chicken.GetStatus();
@@ -29,9 +32,6 @@ public class GameManager : MonoBehaviour
         pig.Init("Piglet", 20, 20);
         pig.GetStatus();
 
-        farmAnimals.Add(chicken);
-        farmAnimals.Add(cow);
-        farmAnimals.Add(pig);
 
         
         
