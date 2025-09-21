@@ -18,6 +18,10 @@ public class Cow : Animal_Common
         Milk = milk;
     }
 
+    public override void GetStatus()
+    {
+        base.GetStatus();
+    }
      public override void MakeSound()
     {
         Debug.Log($"{Name} says: Mohuhuhuhu");

@@ -46,8 +46,11 @@ public class Chicken : Animal_Common
         Debug.Log($"{Name} is sleeping...zzzzzzz");
     }
 
+    public override void GetStatus()
+    {
+        base.GetStatus();
+    }
     
-
 
 
 

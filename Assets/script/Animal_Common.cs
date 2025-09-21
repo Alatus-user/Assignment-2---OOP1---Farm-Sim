@@ -66,7 +66,6 @@ public abstract class Animal_Common : MonoBehaviour
         }
     }
 
-
     public virtual void Init(string name, int hunger, int happiness)
     {
         Name = name;
@@ -98,7 +97,7 @@ public abstract class Animal_Common : MonoBehaviour
     {
         AdjustHunger(+10);
         AdjustHappiness(+10);
-        Debug.Log($"{Name}: Happiness: {feeded} Hunger: {feeded}!");
+      
     }
 
     public virtual void Food()
