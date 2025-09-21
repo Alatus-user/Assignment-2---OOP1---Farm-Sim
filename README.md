@@ -1,1 +1,1 @@
-Assignment อยู่ที่ Asset -> Scnene -> Scripts
+Assignment อยู่ที่ Asset ->  Scripts
