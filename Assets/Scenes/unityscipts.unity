@@ -154,10 +154,7 @@ MonoBehaviour:
   chickenPrefab: {fileID: 1170199732}
   cowPrefab: {fileID: 1817412078}
   pigPrefab: {fileID: 1994520151}
-  farmAnimals:
-  - {fileID: 1170199732}
-  - {fileID: 1817412078}
-  - {fileID: 1994520151}
+  farmAnimals: []
 --- !u!4 &841167717
 Transform:
   m_ObjectHideFlags: 0

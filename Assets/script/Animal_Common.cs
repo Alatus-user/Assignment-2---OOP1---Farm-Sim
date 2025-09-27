@@ -1,6 +1,16 @@
+using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+    public enum FoodType
+    {
+        Hay,  // 0 วัวชอบ
+        Grain, // 1 ไก่ชอบ
+        Oat,  // 2 หมูชอบ
+        RottenFood,  // 3  ไม่ชอบ 
+        AnimalFood, //4   พอกินได้
+
+    }
 
 public abstract class Animal_Common : MonoBehaviour
 {
@@ -66,11 +76,15 @@ public abstract class Animal_Common : MonoBehaviour
         }
     }
 
-    public virtual void Init(string name, int hunger, int happiness)
+    public FoodType FavoriteFood;
+
+    public virtual void Init(string name, int hunger, int happiness, FoodType favFood)
     {
         Name = name;
-        Hunger = hunger;
-        Happiness = happiness;
+        Hunger = 50;
+        Happiness = 50;
+        FavoriteFood = favFood;
+
     }
 
 
@@ -93,12 +107,32 @@ public abstract class Animal_Common : MonoBehaviour
         Debug.Log($"{Name} says: {Sound}");
     }
 
-    public void Feed(int feeded)
+    public void Feed(FoodType foodType, int amount)
     {
-        AdjustHunger(+10);
-        AdjustHappiness(+10);
-      
+        if (foodType == FavoriteFood)
+        {
+            AdjustHunger(-amount);
+            AdjustHappiness(+15);
+            Debug.Log($"{Name} is happy to eat {foodType}!");
+        }
+        else if (foodType == FoodType.RottenFood)
+        {
+            AdjustHunger(+amount);
+            AdjustHappiness(-20);
+            Debug.Log($"{Name} is sad to eat {foodType}.");
+        }
+        else if (foodType == FoodType.AnimalFood)
+        {
+            AdjustHunger(-amount);
+            AdjustHappiness(+5);
+            Debug.Log($"{Name} is okay to eat {foodType}.");
+        }
+
     }
+
+
+
+
 
     public virtual void Food()
     {
@@ -109,6 +143,10 @@ public abstract class Animal_Common : MonoBehaviour
     public virtual void GetStatus()
     {
         Debug.Log($"[Animal Status] Name: {Name}, Hunger: {Hunger}, Happiness: {Happiness}");
-       
+
     }
+
+    public abstract string Produce();
+    
+    
 }

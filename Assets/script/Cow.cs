@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Cow : Animal_Common
 {
-    
+
     private float milk;
 
     public float Milk
@@ -12,9 +12,9 @@ public class Cow : Animal_Common
         private set { milk = Mathf.Max(0f, value); }
     }
 
-    public override void Init(string name, int hunger, int happiness)
+    public void Init(string name, int hunger, int happiness)
     {
-        base.Init(name, hunger, happiness);
+        base.Init(name, hunger, happiness, FoodType.Hay);
         Milk = milk;
     }
 
@@ -22,7 +22,7 @@ public class Cow : Animal_Common
     {
         base.GetStatus();
     }
-     public override void MakeSound()
+    public override void MakeSound()
     {
         Debug.Log($"{Name} says: Mohuhuhuhu");
     }
@@ -36,6 +36,21 @@ public class Cow : Animal_Common
 
     public override void Food()
     {
-        Debug.Log($"{Name} eat:hay");
+        Debug.Log($"{Name} eat:Hay");
     }
+    
+    public override string Produce()
+    {
+        if (Happiness > 20)
+        {
+            int totalMilk = Happiness / 10;
+            return $"{Name} produced Total Milk: {totalMilk} liters.";
+        }
+        else
+        {
+            return $"{Name} is not happy enough to produce milk.";
+        }
+    }
+
+
 }
