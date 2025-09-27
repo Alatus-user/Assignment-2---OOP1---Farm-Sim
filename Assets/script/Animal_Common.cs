@@ -102,7 +102,7 @@ public abstract class Animal_Common : MonoBehaviour
         Debug.Log($"{Name} Happiness: {Happiness}");
     }
 
-    public virtual void MakeSound()
+    public abstract void MakeSound()
     {
         Debug.Log($"{Name} says: {Sound}");
     }
